@@ -12,11 +12,13 @@ Download the Youtube Android Player API from [here](https://developers.google.co
 LinkedIn: https://www.linkedin.com/in/praneet-nigam-8b33b8121/  <br />
 Github: https://github.com/Praneet460 <br/>
 Email: praneetnigam@paperwrk.in / nigampraneet460@gmail.com <br />
+StackOverflow: https://stackoverflow.com/users/8508289/mr-stark 
 
 <b>Kartik Shandilya</b> <br/>
 LinkedIn: https://www.linkedin.com/in/kartik-shandilya-50056312b/  <br />
 Github: https://github.com/kkdroidgit <br/>
 Email: kartikshandilya@paperwrk.in / kartikdroid17@gmail.com <br />
+StackOverflow: https://stackoverflow.com/users/7337723/novo-lucas?tab=profile
 
 <h2>Our Live Projects</h2>
 
