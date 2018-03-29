@@ -1,9 +1,13 @@
 package com.kiu.example.youtubeapi;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -11,7 +15,7 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class YouTubeFragment extends Fragment {
 
     private final String API_KEY = "AIzaSyDg43L3BeYoTDqcOzxuZZaG7GE1B4oS_TA";
 
@@ -19,25 +23,29 @@ public class MainActivity extends AppCompatActivity {
     private YouTubePlayer.OnInitializedListener onInitializedListener;
     //declare view
     YouTubePlayerSupportFragment fragment;
-    Button play,frag;
+    Button play;
+
+    public YouTubeFragment() {
+        // Required empty public constructor
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    }
 
-        fragment = (YouTubePlayerSupportFragment) getSupportFragmentManager()
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout f1or this fragment
+        return inflater.inflate(R.layout.fragment_youtube, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        fragment = (YouTubePlayerSupportFragment) getChildFragmentManager()
                 .findFragmentById(R.id.youtube_player);
-
-        play = findViewById(R.id.play_btn);
-        frag = findViewById(R.id.frag_btn);
-
-        frag.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,FragmentActivity.class));
-            }
-        });
+        play = view.findViewById(R.id.play_btn);
 
         play.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         initPlayer();
-
 
     }
 
@@ -60,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-                Toast.makeText(MainActivity.this, "Error: Can't load the video.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Error: Can't load the video.", Toast.LENGTH_SHORT).show();
             }
         };
     }
